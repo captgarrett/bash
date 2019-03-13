@@ -24,7 +24,7 @@ do
 
 echo "i=${i} ; j=${j}"
 
-mysqldump -uroot -ppassword --lock-tables --max-allowed-packet=1073741824 --single-transaction --routines --triggers --skip-extended-insert --skip-add-drop-table --no-create-db --no-create-info --where "${key} >= ${i} AND ${key} < ${j}" database $table | xz | ssh -i /home/fdsadmin/.ssh/id_rsa -o StrictHostkeyChecking=no fdsadmin@E1OX1PD1IT006 "cat - > /data/recovery/corrupt3/table_${tablename}_${i}.sql.xz"
+mysqldump -uroot -ppassword --lock-tables --max-allowed-packet=1073741824 --single-transaction --routines --triggers --skip-extended-insert --skip-add-drop-table --no-create-db --no-create-info --where "${key} >= ${i} AND ${key} < ${j}" database $table | xz | ssh -i /home/admin/.ssh/id_rsa -o StrictHostkeyChecking=no username@desired.host.here "cat - > /data/recovery/corrupt3/table_${tablename}_${i}.sql.xz"
 
 
 i=${j}
