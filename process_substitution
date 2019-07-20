@@ -1,0 +1,12 @@
+#!/bin/bash
+
+global=0     #<-- global variable assigned to a value of 0
+
+echo "Outside loop, global=$global"     #<-- visual/printed indicator of outter loop starting point
+
+while read i; do
+    global=$i         #variable here gets reassigned from the below (inner for loop) output.
+    echo "Inside loop: global=$global"
+done < <( for n in 1 2 3; do echo $n; done )       #You're essentially doing whatever you want (in that for loop) 3 times by pushing that to while read.
+
+echo "Outside loop, global=$global still :-)"   ##<-- visual/printed indicator of outter loop ending point.  
